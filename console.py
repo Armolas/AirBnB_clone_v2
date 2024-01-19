@@ -118,13 +118,52 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+  #      else:
+#            line =args.split(' ')
+#            print(args)
+ #           return
+        else:
+            line = args.split(' ')
+        if line[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[args]()
+#        elif args not in HBNBCommand.classes:
+ #           print("** class doesn't exist **")
+  #          return
+        new_instance = HBNBCommand.classes[line[0]]()
+        kwargs = {}
+        for item in line[1:]:
+    #        print(item)
+#            value = ""
+            key = item[:item.find('=')]
+            if item.find('="') == -1 and item.find('.') == -1:
+                value = item[item.find('=') + 1:]
+            elif item.find('="') and item.find('.') == -1:
+                value = item[item.find('"') + 1:-1].replace('_', ' ')
+#                print(value)
+                value = str(value.replace('"', '\\"'))
+                value = '"' + value + '"'
+#                print("----------------------")
+ #               print(item)
+  #              print(value)
+            elif item.find('.'):
+                value = item[item.find('=') + 1:]
+  #              print(item)
+   #             print("float value: {}".format(value))
+            else:
+                return
+            kwargs[key] = value
+            print(kwargs)
+        for k, v in kwargs.items():
+            print(v)
+            setattr(new_instance, k, eval(str(v)))
         storage.save()
         print(new_instance.id)
         storage.save()
+#        new_instance = HBNBCommand.classes[args]()
+ #       storage.save()
+  #      print(new_instance.id)
+   #     storage.save()
 
     def help_create(self):
         """ Help information for the create method """
