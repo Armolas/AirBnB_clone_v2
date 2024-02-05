@@ -10,7 +10,7 @@ sudo chown -R ubuntu:ubuntu /data/
 echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 hostname=$(hostname)
-echo "server {
+sudo echo "server {
     listen 80;
     listen [::]:80;
 
@@ -36,4 +36,4 @@ echo "server {
     }
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
