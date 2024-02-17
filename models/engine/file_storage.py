@@ -15,7 +15,7 @@ class FileStorage:
         else:
             obj = {}
             for key, value in FileStorage.__objects.items():
-                if key.__class__ == cls:
+                if isinstance(value, cls):
                     obj.update({key: value})
             return obj
 
@@ -58,5 +58,7 @@ class FileStorage:
 
     def delete(self, obj=None):
         """deletes an object from objects"""
-        if obj in self.__objects:
-            del (obj)
+        for key, value in self.__objects.items():
+            if value == obj:
+                obj_key = key
+        del self.__objects[obj_key]
