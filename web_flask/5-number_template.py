@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""This script starts a Flask web application"""
 from flask import Flask
 from markupsafe import escape
 from flask import render_template
