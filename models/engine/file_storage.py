@@ -64,3 +64,6 @@ class FileStorage:
             if value == obj:
                 obj_key = key
         del self.__objects[obj_key]
+
+    def close(self):
+        self.reload()
