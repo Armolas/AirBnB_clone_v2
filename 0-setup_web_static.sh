@@ -35,5 +35,4 @@ sudo echo "server {
         index index.html;
     }
 }" > /etc/nginx/sites-available/default
-
 sudo service nginx restart

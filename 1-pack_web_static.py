@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""uses fabric to generate an archive of web_static folder"""
+"""uses fabric to generate an archive of web_static folder."""
 from fabric.api import local
 from datetime import datetime
 
