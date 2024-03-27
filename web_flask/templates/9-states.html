@@ -8,9 +8,15 @@
 		<H1>State: {{ states[id].name }}</H1>
 		<H3>Cities</H3>
 		<UL>
+		{% if db %}
 		{% for city in states[id].cities|sort(attribute="name") %}
 			<LI>{{ city.id }}: <B>{{ city.name }}</B>
 		{% endfor %}
+		{% else %}
+		{% for city in states[id].cities()|sort(attribute="name") %}
+			<LI>{{ city.id }}: <B>{{ city.name }}</B>
+		{% endfor %}
+		{% endif %}
 		</UL>
 		{% else %}
 		<H1>Not found!</H1>
