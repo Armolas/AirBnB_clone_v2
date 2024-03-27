@@ -34,7 +34,9 @@ def cities_by_states():
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
     """returns all cities of a state"""
-    return render_template("9-states.html", states=states, id=f"State.{id}", db=db)
+    return render_template(
+            "9-states.html", states=states,
+            id=f"State.{id}", db=db)
 
 
 @app.route('/states', endpoint='/states_list', strict_slashes=False)
